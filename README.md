@@ -1,6 +1,6 @@
 # What's my health?
 
-A simple docker container to make healthchecks. Based on healthchecks.io
+A simple docker container to make healthchecks. Based on [healthchecks.io](https://healthchecks.io/)
 
 ## Usage
 
