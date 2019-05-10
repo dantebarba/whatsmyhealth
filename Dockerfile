@@ -11,6 +11,7 @@ ENV FORCE_TEST=
 ENV CHECK_URL=
 ENV FAIL_URL=
 ENV TZ=
+ENV LOG_LEVEL=0
 
 RUN apk -U add ca-certificates fuse wget dcron tzdata curl \
   && rm -rf /var/cache/apk/*

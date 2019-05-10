@@ -57,7 +57,7 @@ rm -f /tmp/sync.pid
     echo "INFO: Starting crond ..."
     touch /tmp/sync.log
     touch /tmp/crond.log
-    crond -b -l 0 -L /tmp/crond.log
+    crond -b -l $LOG_LEVEL -L /tmp/crond.log
     echo "INFO: crond started"
     tail -F /tmp/crond.log /tmp/sync.log
   fi
