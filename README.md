@@ -1,6 +1,10 @@
 # What's my health?
 
+<<<<<<< HEAD
 Docker image to perform a healthcheck over a HTTP service based on a cron schedule, with [healthchecks.io](https://healthchecks.io) monitoring.
+=======
+A simple docker container to make healthchecks. Based on [healthchecks.io](https://healthchecks.io/)
+>>>>>>> 85cd9f361a23419ef86cf3707c2723217aa9f734
 
 If no service is specified, the script will send an OK ping to the provided url. 
 
