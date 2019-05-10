@@ -1,6 +1,6 @@
 # What's my health?
 
-Docker image to perform a healthcheck over a HTTP service based on a cron schedule, with [healthchecks.io](https://healthchecks.io) monitoring.
+Whatsmyhealth is a Docker image to perform a healthcheck over a HTTP service based on a cron schedule, with [healthchecks.io](https://healthchecks.io) monitoring.
 
 If no service is specified, the script will send an OK ping to the provided url. 
 
