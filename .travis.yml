@@ -1,22 +1,2 @@
 language: bash
 
-before_script:
-  - docker login --username=$DOCKER_USER --password=$DOCKER_PASSWORD
-
-services: 
-  - docker
-
-jobs:
-  include:
-    - stage: push latest
-      script:
-      - docker login --username=$DOCKER_USER --password=$DOCKER_PASSWORD
-      - docker build -t dantebarba/whatsmyhealth:latest .
-      - docker push dantebarba/whatsmyhealth:latest
-      if: branch = master
-    - stage: push a tag
-      script: 
-      - docker login --username=$DOCKER_USER --password=$DOCKER_PASSWORD
-      - docker build -t dantebarba/whatsmyhealth:$TRAVIS_TAG .
-      - docker push dantebarba/whatsmyhealth:$TRAVIS_TAG
-      if: tag IS present
