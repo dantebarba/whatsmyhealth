@@ -3,14 +3,16 @@ language: bash
 services:
   - docker
 
+stages:
+  - name: push_master
+  - if: branch = master
+  - name: push_tag
+    if: tag IS present
+
 before_script:
   - docker login --username=$DOCKER_USER --password=$DOCKER_PASSWORD
 
-
 push_master:
-  branches:
-    only:
-      - master
   script:
   - docker build -t dantebarba/whatsmyhealth:latest .
   - docker push dantebarba/whatsmyhealth:latest
