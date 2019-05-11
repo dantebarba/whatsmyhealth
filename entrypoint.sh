@@ -47,7 +47,7 @@ rm -f /tmp/sync.pid
     fi
 
     # Setup logs
-    d=$(date +%Y_%m_%d-%H_%M_%S)
+    d=$(date +%Y_%m_%d)
     LOG_FILE="/tmp/$d.log"
     echo "INFO: Log file output to $LOG_FILE"
 
