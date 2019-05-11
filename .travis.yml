@@ -1,17 +1,17 @@
 jobs:
   include:
-    stage: push to master
-    services: 
-    - docker
-    script:
-    - docker login --username=$DOCKER_USER --password=$DOCKER_PASSWORD
-    - docker build -t dantebarba/whatsmyhealth:latest .
-    - docker push dantebarba/whatsmyhealth:latest
-    stage: push a tag
-    services: 
-    - docker
-    script: 
-    - docker login --username=$DOCKER_USER --password=$DOCKER_PASSWORD
-    - docker build -t dantebarba/whatsmyhealth:$TRAVIS_TAG .
-    - docker push dantebarba/whatsmyhealth:$TRAVIS_TAG
-    if: tag IS present
+    - stage: push to master
+      services: 
+      - docker
+      script:
+      - docker login --username=$DOCKER_USER --password=$DOCKER_PASSWORD
+      - docker build -t dantebarba/whatsmyhealth:latest .
+      - docker push dantebarba/whatsmyhealth:latest
+    - stage: push a tag
+      services: 
+      - docker
+      script: 
+      - docker login --username=$DOCKER_USER --password=$DOCKER_PASSWORD
+      - docker build -t dantebarba/whatsmyhealth:$TRAVIS_TAG .
+      - docker push dantebarba/whatsmyhealth:$TRAVIS_TAG
+      if: tag IS present
