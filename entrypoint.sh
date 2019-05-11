@@ -46,18 +46,23 @@ rm -f /tmp/sync.pid
       /sync.sh
     fi
 
+    # Setup logs
+    d=$(date +%Y_%m_%d-%H_%M_%S)
+    LOG_FILE="/tmp/$d.log"
+    echo "INFO: Log file output to $LOG_FILE"
+
     # Setup cron schedule
     crontab -d
-    echo "$CRONS /sync.sh >>/tmp/sync.log 2>&1" > /tmp/crontab.tmp
+    echo "$CRONS /sync.sh >> $LOG_FILE 2>&1" > /tmp/crontab.tmp
     echo "TEST_URL is: $TEST_URL"
     crontab /tmp/crontab.tmp
     rm /tmp/crontab.tmp
 
     # Start cron
     echo "INFO: Starting crond ..."
-    touch /tmp/sync.log
+    touch $LOG_FILE
     touch /tmp/crond.log
     crond -b -l $LOG_LEVEL -L /tmp/crond.log
     echo "INFO: crond started"
-    tail -F /tmp/crond.log /tmp/sync.log
+    tail -F /tmp/crond.log $LOG_FILE
   fi
