@@ -13,13 +13,13 @@ ENV FAIL_URL=
 ENV TZ=
 ENV LOG_LEVEL=0
 
-RUN apk -U add ca-certificates fuse wget dcron tzdata curl \
+RUN apk -U add ca-certificates wget dcron tzdata curl \
   && rm -rf /var/cache/apk/*
 
 COPY entrypoint.sh /
 COPY sync.sh /
 
-VOLUME ["/logs"]
+VOLUME ["/tmp"]
 
 ENTRYPOINT ["/entrypoint.sh"]
 
