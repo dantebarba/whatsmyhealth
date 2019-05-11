@@ -1,24 +1,16 @@
-language: bash
-
 services:
   - docker
 
-stages:
-  - name: push_master
-  - if: branch = master
-  - name: push_tag
-    if: tag IS present
-
-before_script:
-  - docker login --username=$DOCKER_USER --password=$DOCKER_PASSWORD
-
 jobs:
   include:
-    stage: push_master
+    stage: push to master
     script:
+      - docker login --username=$DOCKER_USER --password=$DOCKER_PASSWORD
       - docker build -t dantebarba/whatsmyhealth:latest .
       - docker push dantebarba/whatsmyhealth:latest
-    stage: push_tag
+    stage: push a tag
     script: 
+      - docker login --username=$DOCKER_USER --password=$DOCKER_PASSWORD
       - docker build -t dantebarba/whatsmyhealth:$TRAVIS_TAG .
       - docker push dantebarba/whatsmyhealth:$TRAVIS_TAG
+    if: tag IS present
