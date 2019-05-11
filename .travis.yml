@@ -1,0 +1,22 @@
+language: bash
+
+services:
+  - docker
+
+before_script:
+  - docker login --username=$DOCKER_USER --password=$DOCKER_PASSWORD
+
+
+push_master:
+  branches:
+    only:
+      - master
+  script:
+  - docker build -t dantebarba/whatsmyhealth:latest .
+  - docker push dantebarba/whatsmyhealth:latest
+
+push_tag:
+  if: tag IS present
+  script:
+  - docker build -t dantebarba/whatsmyhealth:$TRAVIS_TAG .
+  - docker push dantebarba/whatsmyhealth:$TRAVIS_TAG
