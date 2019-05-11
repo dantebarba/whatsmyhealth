@@ -1,4 +1,4 @@
-languaje: bash
+language: bash
 
 before_script:
   - docker login --username=$DOCKER_USER --password=$DOCKER_PASSWORD
