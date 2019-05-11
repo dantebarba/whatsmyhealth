@@ -14,3 +14,4 @@ jobs:
     - docker login --username=$DOCKER_USER --password=$DOCKER_PASSWORD
     - docker build -t dantebarba/whatsmyhealth:$TRAVIS_TAG .
     - docker push dantebarba/whatsmyhealth:$TRAVIS_TAG
+    if: tag IS present
