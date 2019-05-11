@@ -1,4 +1,4 @@
-# What's my health?
+# What's my health? [![Build Status](https://travis-ci.org/dantebarba/whatsmyhealth.svg?branch=master)](https://travis-ci.org/dantebarba/whatsmyhealth)
 
 **Whatsmyhealth** is a Docker image to perform a healthcheck over a HTTP service based on a cron schedule, with [healthchecks.io](https://healthchecks.io) monitoring.
 
