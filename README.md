@@ -44,6 +44,23 @@ A few environment variables allow you to customize the behavior:
 - `CHECK_URL`: the healthchecks.io url.
 - `FAIL_URL`: allows to define a custom /fail url. Uses `$CHECK_URL/fail` by default.
 - `TZ`: set the [timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) to use for the cron and log `America/Argentina/Buenos_Aires`
+- `LOG_LEVEL`: set the log-level of crond. Defaults to 0. 
+
+  Log levels available:
+
+  ```bash
+  -l emerg or panic  LOG_EMERG   0   [* system is unusable *]
+  -l alert           LOG_ALERT   1   [* action must be taken immediately *]
+  -l crit            LOG_CRIT    2   [* critical conditions *]
+  -l error or err    LOG_ERR     3   [* error conditions *]
+  -l warn or warning LOG_WARNING 4   [* warning conditions *]
+  -l notice          LOG_NOTICE  5   [* normal but significant condition *] the default
+  -l info            LOG_INFO    6   [* informational *]
+  -l debug           LOG_DEBUG   7   [* debug-level messages *] same as -d option 
+  ```
+
+
+
 
 
 
