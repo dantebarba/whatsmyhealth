@@ -43,12 +43,11 @@ else
   fi
 
   # Setup logs
-  LOG_FILE="/tmp/$(date +%Y_%m_%d).log"
   echo "INFO: Log file output to $LOG_FILE"
 
   # Setup cron schedule
   crontab -d
-  echo "$CRONS /sync.sh >> $($LOG_FILE) 2>&1" >/tmp/crontab.tmp
+  echo "$CRONS /sync.sh >> $LOG_FILE 2>&1" >/tmp/crontab.tmp
   echo "TEST_URL is: $TEST_URL"
   crontab /tmp/crontab.tmp
   rm /tmp/crontab.tmp
@@ -56,5 +55,7 @@ else
   # Start cron
   echo "INFO: Starting crond ..."
   touch /tmp/crond.log
-  crond -f -l $LOG_LEVEL -L /tmp/crond.log
+  touch $LOG_FILE
+  crond -b -l $LOG_LEVEL -L /tmp/crond.log
+  tail -F /tmp/crond.log $LOG_FILE
 fi

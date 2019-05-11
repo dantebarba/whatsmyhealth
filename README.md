@@ -37,8 +37,7 @@ services:
 A few environment variables allow you to customize the behavior:
 
 - `TEST_URL`: url to be checked using curl. Expects `HTTP 200`. It will fail if status code is different than `200`.
-* `OUTPUT_LOG`: set variable to output log file to /logs
-* `ROTATE_LOG`: set variable to delete logs older than specified days from /logs
+* `LOG_FILE`: set the log file name. Defaults to `/tmp/sync.log`
 * `CRON`: crontab schedule `0 0 * * *` to perform sync every midnight. Also supprorts cron shortcuts: `@yearly` `@monthly` `@weekly` 
 - `FORCE_TEST`: forces test upon start. Defaults to `0`.
 - `CHECK_URL`: the healthchecks.io url.

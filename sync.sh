@@ -4,12 +4,6 @@ set -e
 
 echo "INFO: Starting sync.sh pid $$ $(date)"
 
-# Delete logs by user request
-if [ ! -z "${ROTATE_LOG##*[!0-9]*}" ]; then
-  echo "INFO: Removing logs older than $ROTATE_LOG day(s)..."
-  find /tmp/*.log -mtime +$ROTATE_LOG -type f -delete
-fi
-
 echo $$ >/tmp/sync.pid
 
 TEST_CODE=200
